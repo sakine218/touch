@@ -27,6 +27,7 @@
     tranceNumber = 45.0;
 }
 
+
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
     //if(index > 0){
     UITouch *touch = [touches anyObject];
