@@ -22,7 +22,7 @@
     NSArray *imageArray;
     NSMutableArray *imageViewArray;
     DMSideScrollView *contentScrollView;
-     SKScene *skScene;
+    SKScene *skScene;
 }
 
 
@@ -83,7 +83,6 @@
     traceMode = NO;
     tranceNumber = 45.0;
 
-    
     imageArray = [NSArray arrayWithObjects:
                   [UIImage imageNamed:@"massu.png"],
                   [UIImage imageNamed:@"onnji.png"],
@@ -125,26 +124,24 @@
     
     UITouch *touch = [[event allTouches] anyObject];
     CGPoint location = [touch locationInView:self.view];
-    UIImageView *imgView = [[UIImageView alloc]initWithImage:imgArray[index]];
+    UIImageView *imgView = [[UIImageView alloc] initWithImage:imageArray[index]];
     imgView.center = CGPointMake(location.x, location.y);
     CGFloat angle = tranceNumber * M_PI / 180.0;
     imgView.transform = CGAffineTransformMakeRotation(angle);
     //traceMode = NO;
-    if (location.y > 406) {
+    if (location.y > 353) {
         //UITouch *touch = [[event allTouches] anyObject];
+    }else{
+        NSLog(@"スタンプを押せないところをタップしました");
         if (touch.view.tag > 0) {
             UIImageView *touchImageView = imageViewArray[touch.view.tag - 1];
             [[touchImageView layer] setBorderColor:[[UIColor blackColor] CGColor]];
             [[touchImageView layer] setBorderWidth:4.0];
         }
-    }else{
         [self.view addSubview:imgView];
+        stamps[stampNum] = imgView;
+        stampNum += 1;
     }
-    
-    stamps[stampNum] = imgView;
-    stampNum += 1;
-
-    
 }
 
 

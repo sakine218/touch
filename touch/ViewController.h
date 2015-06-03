@@ -10,7 +10,6 @@
 
 @interface ViewController : UIViewController
 {
-    UIImage *imgArray[4];
     IBOutlet UIImageView *imageView;
     
     int index;
